@@ -1,0 +1,21 @@
+<html>
+    <head>
+        <title>
+            Customer page
+        </title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width initial-scale=1.0">
+    </head>
+    <body>
+        <form action="/login"  method="POST">
+        <div class="container" algin="center">
+            <h1>Customer details</h1>
+            <hr>
+            <h3>Name:{{session['name']}}</h3>
+            <h3>E-mail:{{session['email']}}</h3>
+            <input type="subit" value="Next">
+        </div>
+        </form>
+
+    </body>
+</html>

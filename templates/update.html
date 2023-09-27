@@ -1,0 +1,175 @@
+<html>
+    <head>
+        <title>
+            SIGN UP PAGE
+        </title>
+        <meta charset="UTF-8">
+        <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" >
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap-theme.min.css" >
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" ></script>
+      <!--  <link rel="stylesheet" href="style1.css">-->
+      <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" ></script>
+    </head>
+<style>
+    
+
+    body{
+    
+    min-height: 70vh;
+    background-color: white;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    
+}
+.register1{
+width:420px;
+background:transparent;
+backdrop-filter: blur(20px);
+color:black;
+border:2px solid rgb(225,225,225,.2);
+border-radius: 15px;
+margin: 120px 470px;
+padding:30px 40px;
+box-shadow: 5px 5px 5px 5px gray;
+
+}
+
+.register1 h1{
+font-size: 36px;
+text-align: center;
+}
+
+.register1 .input-type{
+
+    width:100%;
+    
+    
+    height:50px;
+    margin:30px 0;
+
+}
+.input-type input{
+
+    width:100%;
+    height:40px;
+    
+    
+    border:none;
+    outline: none;
+    border:2px solid rgba(44, 43, 43, 0.2);
+    border-radius: 40px;
+    font-size: 16px;
+    color: rgb(30, 29, 29);
+    padding: 20px 40px 25px 20px ;
+
+
+}
+.input-type textarea{
+
+width:100%;
+height:40px;
+
+border:none;
+outline: none;
+border:2px solid rgba(42, 41, 41, 0.2);
+border-radius: 40px;
+font-size: 16px;
+color: rgb(19, 18, 18);
+padding: 20px 40px 25px 20px ;
+
+
+}
+
+.input-type input::placeholder{
+text-align: center;
+color:black;
+
+
+}
+.input-type textarea::placeholder{
+text-align: center;
+color:black;
+
+
+}
+
+
+.register1 .btn{
+width: 100%;
+height:40px;
+border-radius: 30px;
+
+text-decoration-color:black ;
+border:2px solid rgb(225,225,225,.2);
+font-size: 16px;
+}
+.register1 .btn::value{
+color:black;
+
+}
+.register1 .input-type1{
+
+    width: 100%;
+    height:50px;
+    margin:20px 0;
+    position: relative;
+}
+
+
+</style>
+    <body>
+
+        <div class="register1">
+        <form  method="POST" action="" >
+            <h1 class="page-header text-success text-center">UPDATE RECORD</h1>
+            <hr>
+            <div class="input-type">
+                <input type="text" value="{{data['name']}}" name="name"placeholder="Username" >
+            </div>
+            <div class="input-type">
+                <input type="email" value="{{data['email']}}"name="email" placeholder="E-mail" >
+            </div>
+            <div class="input-type">
+                <input type="date" value="{{data['birth']}}"name="birth" placeholder="Birthday" >
+            </div>
+            <div class="input-type">
+                <textarea placeholder="address" name="address" >{{data['address']}}</textarea>
+            </div>
+
+            <div class="input-type">
+                <input type="text" value="{{data['phone']}}"name="phone" placeholder="Phone number" >
+            </div>
+            <div class="input-type1">
+            <input type="submit" value="Update" class="btn btn-primary btn-block"  >
+        </div>
+        <div class="input-type1">
+             <a href="{{url_for('view')}}">View Record</a>   
+        </div>
+
+               <a href="{{url_for('index')}}">Go to Back</a>
+            
+
+        </form>
+        </div>
+
+    </body>
+</html>
+
+<script>
+   
+
+    $(document).ready(function(){
+    $('form').attr('autocomplete','off');
+   
+    });
+  </script>
+
+
+
+
+
