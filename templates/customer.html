@@ -5,17 +5,32 @@
         </title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width initial-scale=1.0">
+         <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     </head>
     <body>
-        <form action="/login"  method="POST">
-        <div class="container" algin="center">
-            <h1>Customer details</h1>
-            <hr>
-            <h3>Name:{{session['name']}}</h3>
-            <h3>E-mail:{{session['email']}}</h3>
-            <input type="subit" value="Next">
-        </div>
-        </form>
+
+        
+        <frameset rows="30%,70%" border="0" >
+           
+        
+            <frameset cols="10%" border="0">
+                <frame src="{{url_for('menu1')}}"name="leftframe"></frame>
+           
+            </frameset>
+        <frameset cols="80%" border="0">
+          
+        <frame src="{{url_for('main1')}}"name="main"></frame>
+        </frameset>
+        </frameset>
+        
+        
 
     </body>
 </html>

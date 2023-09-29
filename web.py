@@ -30,13 +30,21 @@ def login():
 
         if data:
             
-            return redirect("farmer")
+            return redirect("customer")
         else:
             flash("Details mismatch","danger")
 
     return render_template('index.html')
 #--------------------------------------------------------------------------------------------
-@app.route('/customer',methods=['GET','POST'])
+@app.route('/main1')
+def menu():
+    return render_template('main1.html')
+#--------------------------------------------------------------------------------------------
+@app.route('/menu1')
+def menu():
+    return render_template('menu1.html')
+#--------------------------------------------------------------------------------------------
+@app.route('/customer')
 def customer():
     
     return render_template("customer.html")
@@ -66,7 +74,7 @@ def register():
         except:
             flash("Error in Insert Operation","danger")
         finally:
-            return redirect(url_for('view'))
+            return redirect(url_for('index'))
             con.close()
     return render_template('register.html')
 #--------------------------------------------------------------------------------------------
@@ -117,6 +125,7 @@ def delete(id):
     finally:
         return redirect(url_for('view'))
         con.close()
+#--------------------------------------------------------------------------------------------
   
 @app.route('/view')
 def view():
