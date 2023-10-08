@@ -23,32 +23,27 @@
     font-family:"Poppins",sans-serif;
 
 }
-body{
-    
-    min-height: 100vh;
-    min-width: 100vh;
-    background-image: url("https://wallpaperaccess.com/full/877661.jpg");
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-    
-}
-.btn button{
-    
-   background-color: green;
-   padding: 8px 15px;
-   border-radius: 10px;
-   
-}
+
 
 </style>
 
-<body >
-    <div class="btn">
-  <button> <a href="{{url_for('index')}}">Login</a></button>
-  </div>
-  <div class="btn">
-    <button> <a href="{{url_for('register')}}">Register</a></button>
-    </div>
+
+    <frameset rows="20%,5%,90%" border="0" >
+        <frameset cols="20%,80%" border="0">
+            <frame src="{{url_for('logo')}}" name="logo"></frame>
+            <frame src="{{url_for('header')}}" name="header"></frame>
+        </frameset>
+    
+        <frameset cols="10%" border="0">
+            <frame src="{{url_for('menu')}}"name="leftframe"></frame>
+       
+        </frameset>
+    <frameset cols="80%" border="0">
+      
+    <frame src="{{url_for('main')}}"name="main"></frame>
+    </frameset>
+    </frameset>
+<body>
 </body>
 </html>
 <script>

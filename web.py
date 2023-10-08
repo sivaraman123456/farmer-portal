@@ -1,21 +1,16 @@
 from flask import Flask,render_template,request,flash,redirect,url_for,session
 import sqlite3
-
 app=Flask(__name__)
 app.secret_key="123"
-#con=sqlite3.connect("data1.db")
-#cur=con.cursor()
-
-
 @app.route('/')
 def home():
     return render_template('home.html')
+#--------------------------------------------------------------------------------------------
 @app.route('/index')
 def index():
     return render_template('index.html')
-
+#--------------------------------------------------------------------------------------------
 @app.route('/login',methods=['GET','POST'])
-
 def login():
     if request.method=='POST':
         name=request.form['name']
@@ -23,32 +18,45 @@ def login():
         con=sqlite3.connect('data2.db')
         con.row_factory=sqlite3.Row
         cur=con.cursor()
-        #data=cur.execute("select * from customers")
         cur.execute("select * from customers where name=? and email=?",(name,password))
         data =cur.fetchall()
-        
-
         if data:
-            
             return redirect("customer")
         else:
             flash("Details mismatch","danger")
-
     return render_template('index.html')
 #--------------------------------------------------------------------------------------------
-@app.route('/main1')
+@app.route('/about')
+def about():
+    return render_template('about.html')
+#--------------------------------------------------------------------------------------------
+@app.route('/header')
+def header():
+    return render_template('header.html')
+#--------------------------------------------------------------------------------------------
+@app.route('/main')
+def main():
+    return render_template('main.html')
+#--------------------------------------------------------------------------------------------
+@app.route('/menu')
 def menu():
+    return render_template('menu.html')
+#--------------------------------------------------------------------------------------------
+@app.route('/main1')
+def main1():
     return render_template('main1.html')
 #--------------------------------------------------------------------------------------------
 @app.route('/menu1')
-def menu():
+def menu1():
     return render_template('menu1.html')
+#--------------------------------------------------------------------------------------------
+@app.route('/logo')
+def logo():
+    return render_template('logo.html')
 #--------------------------------------------------------------------------------------------
 @app.route('/customer')
 def customer():
-    
     return render_template("customer.html")
-
 #--------------------------------------------------------------------------------------------        
 @app.route('/register',methods=['GET','POST'])
 def register():
@@ -59,18 +67,13 @@ def register():
             birth=request.form['birth']
             address=request.form['address']
             phone=request.form['phone']
-           
             con=sqlite3.connect("data2.db")
             con.execute("""create table if not exists customers (pid integer primary key,name text,
             email varchar(20),birth date,address text,phone integer)""")
-
             cur=con.cursor()
-
-            
             cur.execute("insert into customers (name,email,birth,address,phone)values(?,?,?,?,?)",(name,email,birth,address,phone))
             con.commit()
             flash("Record Added successfully","success")
-            
         except:
             flash("Error in Insert Operation","danger")
         finally:
@@ -80,7 +83,6 @@ def register():
 #--------------------------------------------------------------------------------------------
 @app.route('/update/<string:id>',methods=['GET','POST'])
 def update(id):
-    
     con=sqlite3.connect('data2.db')
     con.row_factory=sqlite3.Row
     cur=con.cursor()
@@ -93,25 +95,21 @@ def update(id):
             email=request.form['email']
             birth=request.form['birth']
             address=request.form['address']
-            
             phone=request.form['phone']
             con=sqlite3.connect('data2.db')
             cur=con.cursor()
             cur.execute("update customers set name=?,email=?,birth=?,address=?,phone=? where pid=?",(name,email,birth,address,phone,id))
             con.commit()
             flash("Record update successfully","success")
-
         except:
             flash("Record Update Error","danger")
         finally:
             return redirect(url_for('view'))
             con.close()
-
     return render_template('update.html',data=data)
 #--------------------------------------------------------------------------------------------
 @app.route('/delete/<string:id>',methods=['GET','POST'])
 def delete(id):
-    
     try:
         con=sqlite3.connect("data2.db")
         cur=con.cursor()
@@ -120,13 +118,10 @@ def delete(id):
         flash("Record Deleted successfully","success")
     except:
         flash("Record Deleted Error","danger")
-
-            
     finally:
         return redirect(url_for('view'))
         con.close()
 #--------------------------------------------------------------------------------------------
-  
 @app.route('/view')
 def view():
     con=sqlite3.connect('data2.db')
@@ -135,8 +130,6 @@ def view():
     cur.execute("select  * from customers")
     data=cur.fetchall()
     con.close()
-
-
     return render_template('view.html',data=data)
 #--------------------------------------------------------------------------------------------
 
@@ -145,23 +138,30 @@ def farmer():
     if request.method=='POST':
         try:
             product=request.form['product']
-            date=request.form['date']
-            qauntity=request.form['qauntity']
-            Description=request.form['Description']
+            date=request.form['regdate']
+            qauntity=request.form['qty']
+            des=request.form['des']
             price=request.form['price']
             con=sqlite3.connect("data2.db")
-            con.execute("create table product(pid integer primary key,product text,Date date,quantity text,Description text,price int)")
+            con.execute("create table if not exists item(pid integer primary key,products text,Day date,quantity text,Description text,price int)")
             cur=con.cursor()
-            cur.execute("insert into product (product,Date,quantity,Description,price)values(?,?,?,?,?)",(product,date,qauntity,Description,price))
+            cur.execute("insert into item (products,Day,quantity,Description,price)values(?,?,?,?,?)",(product,date,qauntity,des,price))
             con.commit()
             flash("Product Added Successfully","success")
         except:
             flash("Product Doesn't Added","danger")
         finally:
-            return redirect(url_for('customer'))
+            return redirect(url_for('farmer'))
             con.close()
     return render_template('farmer.html')
-  
 #--------------------------------------------------------------------------------------------
+@app.route('/pro')
+def viewpro():
+    return render_template('viewpro.html')
+#--------------------------------------------------------------------------------------------
+
+@app.route('/logout')
+def logout():
+    return render_template('home.html')
 if __name__=='__main__':
     app.run(debug=True)

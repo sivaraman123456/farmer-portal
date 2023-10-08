@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    *{
+        margin:0px;
+        padding: 0px;
+        background-color:rgb(164, 186, 92); ;
+    }
+    a{
+        text-decoration: none;
+        text-decoration-color: orange;
+    }
+    a{
+        color:white;
+        font-family: Arial;
+        font-weight: 20px;
+        font-size: 16px;
+        font-display: bold;
+    
+    }
+     a:hover{
+        color: orange;
+    }
+    .btn{
+  
+        width:400px;
+        float: left;
+        height:35px;
+    }
+    ul{
+        justify-content:center;
+        display: flex;
+        float: left;
+        align-items: center;
+    }
+    ul li{
+        list-style: none;
+        margin-left: 250px;
+        margin-top: 6px;
+        font-size: 15px;
+
+        
+    }
+    ul li a{
+        text-decoration: none;
+        color: white;
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: bold;
+        transition: 0.4s;
+    }
+</style>
+<body>
+    <div class="btn">
+        <ul>
+   <li><a href="{{url_for('main')}}" target="main">HOME</a></li>
+    <li><a href="{{url_for('index')}}" target="main">LOGIN</a></li>
+    <li><a href="{{url_for('about')}}" target="main">ABOUT</a></li>
+    
+     </ul>
+</div>
+   
+</body>
+</html>

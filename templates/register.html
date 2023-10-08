@@ -19,7 +19,7 @@
     body{
     
     min-height: 70vh;
-    background-image: url("https://wallpaperaccess.com/full/877661.jpg");
+    background-image: url("https://thumbs.dreamstime.com/b/wheat-farm-background-wallpaper-abstract-vintage-sunset-65850813.jpg");
     background-repeat: no-repeat;
     background-size: 100% 100%;
     
@@ -28,8 +28,8 @@
 width:420px;
 background:transparent;
 backdrop-filter: blur(20px);
-color:white;
-border:2px solid rgb(225,225,225,.2);
+color:black;
+border:2px solid rgba(0, 0, 0, 0.2);
 border-radius: 15px;
 margin: 120px 470px;
 padding:30px 40px;
@@ -59,10 +59,10 @@ text-align: center;
     
     border:none;
     outline: none;
-    border:2px solid rgb(225,225,225,.2);
+    border:2px solid rgba(0, 0, 0, 0.2);
     border-radius: 40px;
     font-size: 16px;
-    color: white;
+    color:black;
     padding: 20px 40px 25px 20px ;
 
 
@@ -75,10 +75,10 @@ background:transparent;
 
 border:none;
 outline: none;
-border:2px solid rgb(225,225,225,.2);
+border:2px solid rgba(0, 0, 0, 0.2);
 border-radius: 40px;
 font-size: 16px;
-color: white;
+color:black;
 padding: 20px 40px 25px 20px ;
 
 
@@ -86,13 +86,13 @@ padding: 20px 40px 25px 20px ;
 
 .input-type input::placeholder{
 text-align: center;
-color:white;
+color:black;
 
 
 }
 .input-type textarea::placeholder{
 text-align: center;
-color:white;
+color:black;
 
 
 }
@@ -104,7 +104,7 @@ height:40px;
 border-radius: 30px;
 
 text-decoration-color:black ;
-border:2px solid rgb(225,225,225,.2);
+border:2px solid rgba(0, 0, 0, 0.2);
 font-size: 16px;
 }
 .register1 .btn::value{
@@ -146,11 +146,9 @@ color:black;
             <div class="input-type1">
             <input type="submit" value="register" class="btn btn-primary btn-block"  >
         </div>
-        <div class="input-type1">
-             <a href="{{url_for('view')}}">View Record</a>   
-        </div>
+        
 
-               <a href="{{url_for('index')}}">Go to Back</a>
+               <a href="{{url_for('index')}}" class="btn btn-block">Go to Back</a>
             
 
         </form>

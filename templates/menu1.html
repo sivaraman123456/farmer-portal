@@ -5,7 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+<style>
+    *{
+        background-color: rgba(55, 189, 55, 0.348);
+    }
+</style>
 <body>
+    <div class="btn">
+        <ul>
+   <li><a href="{{url_for('main1')}}" target="main1" class="btn btn-block">HOME</a></li>
+   <li><a href="{{url_for('farmer')}}" target="main1">PRODUCT REGISTER</a></li>
+   <li><a href="{{url_for('viewpro')}}" target="main1">VIEW PRODUCT</a></li>
+   <li><a href="{{url_for('view')}}" target="main1">FARMER DETAILS</a></li>
+   <li><a href="{{url_for('logout')}}" target="new">LOGOUT</a></li>
     
+     </ul>
+</div>
 </body>
 </html>
