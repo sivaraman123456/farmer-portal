@@ -125,7 +125,7 @@ color:black;
     <body>
 
         <div class="register1">
-        <form  action="" method="POST" >
+        <form  action="/farmer" method="POST" >
             <h1>ADD PRODUCT</h1>
             {% with messages = get_flashed_messages(with_categories=true) %}
             {% if messages %}
@@ -136,8 +136,11 @@ color:black;
     
             {% endif %}
        
-     {% endwith %}
+     {% endwith %}        
             <hr>
+            <div class="input-type">
+                <input type="text" name="name"placeholder="Farmer name" required>
+            </div>
             <div class="input-type">
                 <input type="text" name="product"placeholder="product" required>
             </div>
@@ -147,9 +150,7 @@ color:black;
             <div class="input-type">
                 <input type="text" name="qty" placeholder="quantity" required>
             </div>
-            <div class="input-type">
-                <textarea placeholder="Description" name="des"  required></textarea>
-            </div>
+           
 
             <div class="input-type">
                 <input type="number" name="price" placeholder="price" required>

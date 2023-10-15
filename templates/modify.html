@@ -1,7 +1,7 @@
 <html>
     <head>
         <title>
-            SIGN UP PAGE
+            MODIFY DATA
         </title>
         <meta charset="UTF-8">
        
@@ -125,35 +125,28 @@ color:black;
 
         <div class="register1">
         <form  method="POST" action="" >
-            <h1 class="page-header text-success text-center">UPDATE RECORD</h1>
+            <h1 class="page-header text-success text-center">MODIFY RECORD</h1>
             <hr>
             <div class="input-type">
-                <input type="text" value="{{data['name']}}" name="name"placeholder="Username" >
+                <input type="text" value="{{data['Name']}}" name="name"placeholder="Username" >
             </div>
             <div class="input-type">
-                <input type="email" value="{{data['email']}}"name="email" placeholder="E-mail" >
+                <input type="text" value="{{data['products']}}"name="product" placeholder="E-mail" >
             </div>
             <div class="input-type">
-                <input type="date" value="{{data['birth']}}"name="birth" placeholder="Birthday" >
+                <input type="date" value="{{data['Day']}}"name="regdate" placeholder="Birthday" >
             </div>
             <div class="input-type">
-                <textarea placeholder="address" name="address" >{{data['address']}}</textarea>
+                <input placeholder="quantity" name="qty" value="{{data['quantity']}}">
             </div>
 
             <div class="input-type">
-                <input type="text" value="{{data['phone']}}"name="phone" placeholder="Phone number" >
+                <input type="number" value="{{data['price']}}"name="price" placeholder="Price" >
             </div>
             <div class="input-type1">
             <input type="submit" value="Update" class="btn btn-primary btn-block"  >
         </div>
-        <div class="input-type1">
-             <a href="{{url_for('view')}}">View Record</a>   
-        </div>
-
-             
-            
-
-        </form>
+     </form>
         </div>
 
     </body>

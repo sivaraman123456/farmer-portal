@@ -27,7 +27,7 @@
 
 {% endwith %}
     <div class="main">
-       <center> <h1>FARMER RECORD<hr></h1></center>
+       <center> <h1>PRODUCT RECORD<hr></h1></center>
 
   
         <div align="center"class="table">
@@ -38,13 +38,14 @@
         <thead>
             <tr>
                 <th>S.No</th>
-                <th>Name</th>
-                <th>E-mail</th>
-                <th>Birth</th>
-                <th>Address</th>
-                <th>Phone</th>
+                <th>Farmer Name</th>
+                <th>PRODUCT</th>
+                <th>DATE</th>
+                <th>QUANTITY</th>
+                <th>PRICE</th>
                 <th>Update</th>
                 <th>Delete</th>
+                
             </tr>
         </thead>
        <tbody>
@@ -52,20 +53,21 @@
         {%set i=loop.index %}
         <tr>
             <td>{{i}}</td>
-            <td>{{res["name"]}}</td>
-            <td>{{res["email"]}}</td>
-            <td>{{res["birth"]}}</td>
-            <td>{{res["address"]}}</td>
-            <td>{{res["phone"]}}</td>
-            <td><a href=" {{url_for('update',id=res['pid'])}}"class="btn btn-primary">UPDATE</a></td>
-            <td><a href=" {{url_for('delete',id=res['pid'])}}"class="btn btn-danger">DELETE</a></td>
+            <td>{{res["Name"]}}</td>
+            <td>{{res["products"]}}</td>
+            <td>{{res["Day"]}}</td>
+            <td>{{res["quantity"]}}</td>
+            <td>{{res["price"]}}</td>
+            <td><a href=" {{url_for('modify',id=res['pid'])}}"class="btn btn-primary">UPDATE</a></td>
+            <td><a href=" {{url_for('clear',id=res['pid'])}}"class="btn btn-danger">DELETE</a></td>
+
+           
         </tr>
         {% endfor %}
        </tbody>
        </table>
        <div>
-        <a href="{{url_for('main1')}}"class ="btn btn-warning pull right">HOME</a>
-        
+        <a href="{{url_for('main1')}}"class ="btn btn-warning pull right">HOME</a>;        
        </div>
     </div>
    </div>

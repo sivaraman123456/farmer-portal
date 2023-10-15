@@ -98,7 +98,8 @@ def update(id):
             phone=request.form['phone']
             con=sqlite3.connect('data2.db')
             cur=con.cursor()
-            cur.execute("update customers set name=?,email=?,birth=?,address=?,phone=? where pid=?",(name,email,birth,address,phone,id))
+            cur.execute("""update customers set name=?,email=?,birth=?,address=?,phone=? where pid=?""",
+            (name,email,birth,address,phone,id))
             con.commit()
             flash("Record update successfully","success")
         except:
@@ -122,6 +123,20 @@ def delete(id):
         return redirect(url_for('view'))
         con.close()
 #--------------------------------------------------------------------------------------------
+@app.route('/clear/<string:id>',methods=['GET','POST'])
+def clear(id):
+    try:
+        con=sqlite3.connect("data2.db")
+        cur=con.cursor()
+        cur.execute("delete from item1 where pid=?",(id))
+        con.commit()
+        flash("Record Deleted successfully","success")
+    except:
+        flash("Record Deleted Error","danger")
+    finally:
+        return redirect(url_for('pro'))
+        con.close()
+#--------------------------------------------------------------------------------------------
 @app.route('/view')
 def view():
     con=sqlite3.connect('data2.db')
@@ -132,20 +147,21 @@ def view():
     con.close()
     return render_template('view.html',data=data)
 #--------------------------------------------------------------------------------------------
-
 @app.route('/farmer',methods=['GET','POST'])
 def farmer():
     if request.method=='POST':
         try:
             product=request.form['product']
-            date=request.form['regdate']
-            qauntity=request.form['qty']
-            des=request.form['des']
+            regdate=request.form['regdate']
+            qty=request.form['qty']
+            name=request.form['name']
             price=request.form['price']
             con=sqlite3.connect("data2.db")
-            con.execute("create table if not exists item(pid integer primary key,products text,Day date,quantity text,Description text,price int)")
+            con.execute("""create table if not exists item1(pid integer primary key,
+            Name text,products text,Day date,quantity text,price int)""")
             cur=con.cursor()
-            cur.execute("insert into item (products,Day,quantity,Description,price)values(?,?,?,?,?)",(product,date,qauntity,des,price))
+            cur.execute("""insert into item1 (Name,products,Day,quantity,price)values
+            (?,?,?,?,?)""",(name,product,regdate,qty,price))
             con.commit()
             flash("Product Added Successfully","success")
         except:
@@ -155,11 +171,45 @@ def farmer():
             con.close()
     return render_template('farmer.html')
 #--------------------------------------------------------------------------------------------
-@app.route('/pro')
-def viewpro():
-    return render_template('viewpro.html')
+@app.route('/modify/<string:id>',methods=['GET','POST'])
+def modify(id):
+    con=sqlite3.connect("data2.db")
+    con.row_factory=sqlite3.Row
+    cur=con.cursor()
+    cur.execute("select * from item1 where pid=?",(id))
+    data=cur.fetchone()
+    con.close()
+    if request.method=='POST':
+        try:
+            product=request.form['product']
+            regdate=request.form['regdate']
+            qty=request.form['qty']
+            name=request.form['name']
+            price=request.form['price']
+            con=sqlite3.connect("data2.db")
+           
+            cur=con.cursor()
+            cur.execute("""update  item1 set Name=?,products=?,Day=?,quantity=?,price=? where pid=?""",
+            (name,product,regdate,qty,price,id))
+            con.commit()
+            flash("Product Added Successfully","success")
+        except:
+            flash("Product Doesn't Added","danger")
+        finally:
+            return redirect(url_for('pro'))
+            con.close()
+    return render_template('modify.html',data=data)
 #--------------------------------------------------------------------------------------------
-
+@app.route('/pro')
+def pro():
+    con=sqlite3.connect('data2.db')
+    con.row_factory=sqlite3.Row
+    cur=con.cursor()
+    cur.execute("select  * from item1")
+    data=cur.fetchall()
+    con.close()
+    return render_template('pro.html',data=data)
+#--------------------------------------------------------------------------------------------
 @app.route('/logout')
 def logout():
     return render_template('home.html')
