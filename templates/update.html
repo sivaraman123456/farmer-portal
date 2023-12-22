@@ -17,130 +17,138 @@
 <style>
     
 
-    body{
-    
-    min-height: 70vh;
-    background-color: white;
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-    
+
+    * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
 }
-.register1{
-width:420px;
-background:transparent;
-backdrop-filter: blur(20px);
-color:black;
-border:2px solid rgb(225,225,225,.2);
-border-radius: 15px;
-margin: 120px 470px;
-padding:30px 40px;
-box-shadow: 5px 5px 5px 5px gray;
-
+body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background-image:url("https://png.pngtree.com/background/20210709/original/pngtree-green-organic-food-ecological-farm-poster-background-material-picture-image_854784.jpg");
+background-position: center;
+background-repeat: no-repeat;
+background-size: 100% 100%;
 }
-
-.register1 h1{
-font-size: 36px;
-text-align: center;
+.container {
+  position: relative;
+  max-width: 700px;
+  width: 100%;
+  background:transparent;
+  backdrop-filter: blur(20px);
+  padding: 25px;
+  border-radius: 8px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
 }
-
-.register1 .input-type{
-
-    width:100%;
-    
-    
-    height:50px;
-    margin:30px 0;
-
+ h1 {
+  font-size: 3rem;
+  color: #333;
+  font-weight: 500;
+  text-align: center;
 }
-.input-type input{
-
-    width:100%;
-    height:40px;
-    
-    
-    border:none;
-    outline: none;
-    border:2px solid rgba(44, 43, 43, 0.2);
-    border-radius: 40px;
-    font-size: 16px;
-    color: rgb(30, 29, 29);
-    padding: 20px 40px 25px 20px ;
-
-
+.container .form {
+  margin-top: 30px;
 }
-.input-type textarea{
-
-width:100%;
-height:40px;
-
-border:none;
-outline: none;
-border:2px solid rgba(42, 41, 41, 0.2);
-border-radius: 40px;
-font-size: 16px;
-color: rgb(19, 18, 18);
-padding: 20px 40px 25px 20px ;
-
-
+.form .input-box {
+  width: 100%;
+  margin-top: 20px;
 }
 
-.input-type input::placeholder{
-text-align: center;
-color:black;
-
-
+.input-box input{
+  position: relative;
+  height: 50px;
+  width: 100%;
+  outline: none;
+  font-size: 2rem;
+  color: #707070;
+  margin-top: 8px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 0 15px;
 }
-.input-type textarea::placeholder{
-text-align: center;
-color:black;
 
-
+.input-box textarea{
+  position: relative;
+  height: 50px;
+  width: 100%;
+  outline: none;
+  font-size: 2rem;
+  color: #707070;
+  margin-top: 8px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 0 15px;
+}
+.input-box input:focus {
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+}
+.input-box textarea:focus {
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+}
+.form .column {
+  display: flex;
+  column-gap: 15px;
 }
 
+.form .btn {
+  height: 55px;
+  width: 100%;
+  color: #fcfafa;
+  font-size: 16px;
+  font-weight: 400;
+  margin-top: 30px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background: rgb(130, 106, 251);
+}
 
-.register1 .btn{
+.container .btn{
 width: 100%;
 height:40px;
 border-radius: 30px;
 
 text-decoration-color:black ;
-border:2px solid rgb(225,225,225,.2);
+border:2px solid rgba(0, 0, 0, 0.2);
 font-size: 16px;
 }
-.register1 .btn::value{
+.container .btn::value{
 color:black;
 
 }
-.register1 .input-type1{
+.container .input-type1{
 
     width: 100%;
     height:50px;
     margin:20px 0;
     position: relative;
 }
-
-
 </style>
     <body>
 
-        <div class="register1">
+        <selection class="container">
         <form  method="POST" action="" >
             <h1 class="page-header text-success text-center">UPDATE RECORD</h1>
             <hr>
-            <div class="input-type">
+            <div class="input-box">
                 <input type="text" value="{{data['name']}}" name="name"placeholder="Username" >
             </div>
-            <div class="input-type">
+            <div class="input-box">
                 <input type="email" value="{{data['email']}}"name="email" placeholder="E-mail" >
             </div>
-            <div class="input-type">
+            <div class="input-box">
                 <input type="date" value="{{data['birth']}}"name="birth" placeholder="Birthday" >
             </div>
-            <div class="input-type">
+            <div class="input-box">
                 <textarea placeholder="address" name="address" >{{data['address']}}</textarea>
             </div>
 
-            <div class="input-type">
+            <div class="input-box">
                 <input type="text" value="{{data['phone']}}"name="phone" placeholder="Phone number" >
             </div>
             <div class="input-type1">
@@ -154,7 +162,7 @@ color:black;
             
 
         </form>
-        </div>
+        </selection>
 
     </body>
 </html>
