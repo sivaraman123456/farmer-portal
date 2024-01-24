@@ -21,10 +21,17 @@ def login():
         cur.execute("select * from customers where name=? and email=?",(name,password))
         data =cur.fetchall()
         if data:
+            return redirect("user")
+        elif name=='admin' and password=='123456':
             return redirect("customer")
+            
         else:
             flash("Details mismatch","danger")
     return render_template('index.html')
+#--------------------------------------------------------------------------------------------
+@app.route("/user")
+def user():
+    return render_template("user.html")
 #--------------------------------------------------------------------------------------------
 @app.route("/contact")
 def contact():
@@ -53,6 +60,11 @@ def main1():
 @app.route('/menu1')
 def menu1():
     return render_template('menu1.html')
+
+#--------------------------------------------------------------------------------------------
+@app.route('/menu2')
+def menu2():
+    return render_template('menu2.html')
 #--------------------------------------------------------------------------------------------
 @app.route('/logo')
 def logo():
@@ -151,6 +163,16 @@ def view():
     con.close()
     return render_template('view.html',data=data)
 #--------------------------------------------------------------------------------------------
+@app.route('/v')
+def v():
+    con=sqlite3.connect('data2.db')
+    con.row_factory=sqlite3.Row
+    cur=con.cursor()
+    cur.execute("select  * from customers")
+    data=cur.fetchall()
+    con.close()
+    return render_template('v.html',data=data)
+#--------------------------------------------------------------------------------------------
 @app.route('/farmer',methods=['GET','POST'])
 def farmer():
     if request.method=='POST':
@@ -213,6 +235,16 @@ def pro():
     data=cur.fetchall()
     con.close()
     return render_template('pro.html',data=data)
+#--------------------------------------------------------------------------------------------
+@app.route('/pro1')
+def pro1():
+    con=sqlite3.connect('data2.db')
+    con.row_factory=sqlite3.Row
+    cur=con.cursor()
+    cur.execute("select  * from item1")
+    data=cur.fetchall()
+    con.close()
+    return render_template('pro1.html',data=data)
 #--------------------------------------------------------------------------------------------
 @app.route('/logout')
 def logout():
