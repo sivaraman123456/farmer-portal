@@ -18,15 +18,16 @@ def login():
         con=sqlite3.connect('data2.db')
         con.row_factory=sqlite3.Row
         cur=con.cursor()
-        cur.execute("select * from customers where name=? and email=?",(name,password))
-        data =cur.fetchall()
-        if data:
+        cur.execute("select * from customers where   name=? or email=?",(name,password))
+        pass1 =cur.fetchone()
+        if  pass1['name']==name and pass1['email']==password:
             return redirect("user")
         elif name=='admin' and password=='123456':
             return redirect("customer")
-            
+        
         else:
-            flash("Details mismatch","danger")
+            flash(" invalid password","danger")
+
     return render_template('index.html')
 #--------------------------------------------------------------------------------------------
 @app.route("/user")
@@ -124,6 +125,42 @@ def update(id):
             return redirect(url_for('view'))
             con.close()
     return render_template('update.html',data=data)
+#--------------------------------------------------------------------------------------------
+@app.route('/change/<string:id>',methods=['GET','POST'])
+def change(id):
+    con=sqlite3.connect('data2.db')
+    con.row_factory=sqlite3.Row
+    cur=con.cursor()
+    cur.execute("select * from customers where pid=?",(id))
+    data=cur.fetchone()
+    con.close()
+    if request.method=='POST':
+        try:
+           
+            email=request.form['email']
+    
+            con=sqlite3.connect('data2.db')
+            cur=con.cursor()
+            cur.execute("""update customers set email=? where pid=?""",(email,id))
+            con.commit()
+            flash("password change successfully","success")
+        except:
+            flash("password doesn't change","danger")
+        finally:
+            return redirect(url_for('index'))
+            con.close()
+    return render_template('change.html',data=data)
+#--------------------------------------------------------------------------------------------
+
+@app.route('/forget',methods=['GET','POST'])
+def forget():
+    con=sqlite3.connect('data2.db')
+    con.row_factory=sqlite3.Row
+    cur=con.cursor()
+    cur.execute("select * from customers")
+    data=cur.fetchall()
+    con.close()
+    return render_template("forget.html",data=data)
 #--------------------------------------------------------------------------------------------
 @app.route('/delete/<string:id>',methods=['GET','POST'])
 def delete(id):

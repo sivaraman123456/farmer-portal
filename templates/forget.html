@@ -14,6 +14,8 @@
  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <title>Document</title>
 </head>
+
+
 <style>
     body{
         background-color:rgb(147, 163, 95); 
@@ -36,7 +38,7 @@ background-size:cover;
 
 {% endwith %}
     <div class="main">
-       <center> <h1>PRODUCT RECORD<hr></h1></center>
+       <center> <h1>FORGET PASSWORD<hr></h1></center>
 
   
         <div align="center"class="table">
@@ -47,14 +49,13 @@ background-size:cover;
         <thead>
             <tr>
                 <th>S.No</th>
-                <th>Farmer Name</th>
-                <th>PRODUCT</th>
-                <th>DATE</th>
-                <th>QUANTITY</th>
-                <th>PRICE</th>
-                <th>Update</th>
-                <th>Delete</th>
+                <th>Name</th>
                 
+               
+               
+                <th>Phone</th>
+                <th>New Password</th>
+               
             </tr>
         </thead>
        <tbody>
@@ -62,21 +63,18 @@ background-size:cover;
         {%set i=loop.index %}
         <tr>
             <td>{{i}}</td>
-            <td>{{res["Name"]}}</td>
-            <td>{{res["products"]}}</td>
-            <td>{{res["Day"]}}</td>
-            <td>{{res["quantity"]}}</td>
-            <td>{{res["price"]}}</td>
-            <td><a href=" {{url_for('modify',id=res['pid'])}}"class="btn btn-primary">UPDATE</a></td>
-            <td><a href=" {{url_for('clear',id=res['pid'])}}"class="btn btn-danger">DELETE</a></td>
-
+            <td>{{res["name"]}}</td>
            
+            <td>{{res["phone"]}}</td>
+            <td><a href=" {{url_for('change',id=res['pid'])}}"class="btn btn-primary">Change New Password </a>   </td>
+            
         </tr>
         {% endfor %}
        </tbody>
        </table>
        <div>
-        <a href="{{url_for('main1')}}"class ="btn btn-warning pull right">HOME</a>;        
+        <a href="{{url_for('index')}}"class ="btn btn-warning pull right">HOME</a>
+        
        </div>
     </div>
    </div>

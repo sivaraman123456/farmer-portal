@@ -152,7 +152,7 @@ font-weight: 600;
         </div>
         <div class="remember-forget">
             <label for ="check"><input type="checkbox" id="check">Remember me</label>
-            <a href="#">forgot password</a>
+            <a href="{{url_for('forget', name='name')}}">forgot password</a>
         </div>
         <div class="input-box1" >
         <input type="submit"  value="login" class="btn btn-success btn-block" >

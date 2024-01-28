@@ -133,24 +133,13 @@ color:black;
 
         <selection class="container">
         <form  method="POST" action="" >
-            <h1 class="page-header text-success text-center">UPDATE RECORD</h1>
+            <h1 class="page-header text-success text-center">CHANGE NEW PASSWORD</h1>
             <hr>
+           
             <div class="input-box">
-                <input type="text" value="{{data['name']}}" name="name"placeholder="Username" >
+                <input type="email" name="email" placeholder="NEW PASSWORD" >
             </div>
-            <div class="input-box">
-                <input type="email" value="{{data['email']}}"name="email" placeholder="E-mail" >
-            </div>
-            <div class="input-box">
-                <input type="date" value="{{data['birth']}}"name="birth" placeholder="Birthday" >
-            </div>
-            <div class="input-box">
-                <textarea placeholder="address" name="address" >{{data['address']}}</textarea>
-            </div>
-
-            <div class="input-box">
-                <input type="text" value="{{data['phone']}}"name="phone" placeholder="Phone number" >
-            </div>
+          
             <div class="input-type1">
             <input type="submit" value="Update" class="btn btn-primary btn-block"  >
         </div>
