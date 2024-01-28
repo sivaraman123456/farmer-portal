@@ -147,12 +147,12 @@ font-weight: 600;
         </div>
         
         <div class="input-box">
-            <input type="password"name="password" placeholder="password" required>
+            <input type="password"name="password" placeholder="password(email)" required>
             <i class='bx bxs-lock-alt'></i>
         </div>
         <div class="remember-forget">
             <label for ="check"><input type="checkbox" id="check">Remember me</label>
-            <a href="{{url_for('forget', name='name')}}">forgot password</a>
+            <a href="{{url_for('forget')}}">forgot password</a>
         </div>
         <div class="input-box1" >
         <input type="submit"  value="login" class="btn btn-success btn-block" >

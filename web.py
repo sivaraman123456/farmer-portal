@@ -20,7 +20,7 @@ def login():
         cur=con.cursor()
         cur.execute("select * from customers where   name=? or email=?",(name,password))
         pass1 =cur.fetchone()
-        if  pass1['name']==name and pass1['email']==password:
+        if  pass1:
             return redirect("user")
         elif name=='admin' and password=='123456':
             return redirect("customer")
