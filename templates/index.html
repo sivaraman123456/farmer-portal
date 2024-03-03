@@ -1,18 +1,14 @@
 <html>
-
 <head>
     <meta charset="utf-8"> <!--utf unicode transformation format-->
     <meta name="author" content="siva">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-
-    <!-- jQuery library -->
+<!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-    
-    <!-- Latest compiled JavaScript -->
+        <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-
 </head>
 <style>
     *{
@@ -20,17 +16,14 @@
     padding:0px;
     box-sizing:border-box;
     font-family:"Poppins",sans-serif;
-
 }
 body{
-    
-    min-height: 100vh;
+     min-height: 100vh;
     background-image: url("https://images.pexels.com/photos/96715/pexels-photo-96715.jpeg?cs=srgb&dl=pexels-alejandro-barr%C3%B3n-96715.jpg&fm=jpg");
     background-repeat: no-repeat;
     background-size: 100% 100%;
     
 }
-
 .Warpper{
     width:420px;
     background-color:transparent ;
@@ -51,8 +44,6 @@ position: relative;
     height:50px;
     margin: 30px 0;
 }
-
-
 .input-box input{
     width:100%;
     height:100%;
@@ -69,30 +60,24 @@ position: relative;
     color:#fff;
     text-align: center;
  }
- 
-
- .input-box i{
+  .input-box i{
     position:absolute;
     right:20px;
     top:50%;
     transform:translateY(-50%);
     font-size: 20px;
  }
-
- .Warpper .remember-forget{
+.Warpper .remember-forget{
     display: flex;
     justify-content: space-around;
  }
-
  .remember-forget label input{
     color: black;
  }
-
  .remember-forget a{
     color: black;
     text-decoration: none;
  }
-
  .remember-forget a:hover{
     text-decoration: underline;
  }
@@ -101,52 +86,38 @@ position: relative;
     text-align: center;
     margin-top: 20px;
  }
-
-
-
  .register-link p a{
     color: black;
     text-decoration: none;
 font-weight: 600;
  }
-
-
  .register-link  p a:hover{
     text-decoration: underline;
  }
-
  .Warpper .input-box1 {
     width:100%;
     height: 50px;
     margin:20px 0px;
     position: relative;
  }
-
 </style>
-
 <body >
-   
     <div class="Warpper">
-   
     <form action="/login" method="POST" autocomplete="off">
         <h1>Login</h1>
         <hr>
         {% with messages = get_flashed_messages(with_categories=true) %}
         {% if messages %}
-
-            {% for category, message in messages %}
+{% for category, message in messages %}
                 <div class="alert alert-{{category}}">{{ message }}</div>
             {% endfor %}
-
-        {% endif %}
-   
- {% endwith %}
+             {% endif %}
+    {% endwith %}
         <div class="input-box">
             <input type="text" name="name"placeholder="Username" required>
             <i class='bx bxs-user-plus'></i>
         </div>
-        
-        <div class="input-box">
+    <div class="input-box">
             <input type="password"name="password" placeholder="password(email)" required>
             <i class='bx bxs-lock-alt'></i>
         </div>
@@ -165,7 +136,6 @@ font-weight: 600;
 </body>
 </html>
 <script>
-    
     $(document).ready (function(){
      $(".alert").hide(3000)
      });      

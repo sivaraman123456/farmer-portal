@@ -4,18 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
  <!-- Latest compiled and minified CSS -->
  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-
  <!-- jQuery library -->
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
- 
- <!-- Latest compiled JavaScript -->
+  <!-- Latest compiled JavaScript -->
  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <title>Document</title>
 </head>
-
 <style>
     body{
         background-color:rgb(147, 163, 95); 
@@ -23,19 +19,14 @@ background-position: center;
 background-repeat: no-repeat;
 background-size:cover;
 }
-
-
 </style>
 <body>
     {% with messages = get_flashed_messages(with_categories=true) %}
     {% if messages %}
-
-        {% for category, message in messages %}
+            {% for category, message in messages %}
             <div class="alert alert-{{category}}">{{ message }}</div>
         {% endfor %}
-
-    {% endif %}
-
+{% endif %}
 {% endwith %}
     <div class="main">
        <center> <h1>FARMER RECORD<hr></h1></center>
@@ -50,7 +41,6 @@ background-size:cover;
                 <th>Birth</th>
                 <th>Address</th>
                 <th>Phone</th>
-              
             </tr>
         </thead>
        <tbody>
@@ -75,9 +65,7 @@ background-size:cover;
 </body>
 </html>
 <script>
-    
-    $(document).ready (function(){
+        $(document).ready (function(){
      $(".alert").hide(3000)
-                
-     });      
+                 });      
   </script>

@@ -18,13 +18,12 @@ def login():
         con=sqlite3.connect('data2.db')
         con.row_factory=sqlite3.Row
         cur=con.cursor()
-        cur.execute("select * from customers where   name=? or email=?",(name,password))
+        cur.execute("select * from customers where   name=? and email=?",(name,password))
         pass1 =cur.fetchone()
-        if  pass1:
+        if  pass1 :
             return redirect("user")
         elif name=='admin' and password=='123456':
             return redirect("customer")
-        
         else:
             flash(" invalid password","danger")
 
@@ -61,7 +60,6 @@ def main1():
 @app.route('/menu1')
 def menu1():
     return render_template('menu1.html')
-
 #--------------------------------------------------------------------------------------------
 @app.route('/menu2')
 def menu2():
@@ -136,14 +134,12 @@ def change(id):
     con.close()
     if request.method=='POST':
         try:
-           
-            email=request.form['email']
-    
-            con=sqlite3.connect('data2.db')
-            cur=con.cursor()
-            cur.execute("""update customers set email=? where pid=?""",(email,id))
-            con.commit()
-            flash("password change successfully","success")
+           email=request.form['email']
+           con=sqlite3.connect('data2.db')
+           cur=con.cursor()
+           cur.execute("""update customers set email=? where pid=?""",(email,id))
+           con.commit()
+           flash("password change successfully","success")
         except:
             flash("password doesn't change","danger")
         finally:
@@ -151,7 +147,6 @@ def change(id):
             con.close()
     return render_template('change.html',data=data)
 #--------------------------------------------------------------------------------------------
-
 @app.route('/forget',methods=['GET','POST'])
 def forget():
     con=sqlite3.connect('data2.db')
@@ -250,7 +245,6 @@ def modify(id):
             name=request.form['name']
             price=request.form['price']
             con=sqlite3.connect("data2.db")
-           
             cur=con.cursor()
             cur.execute("""update  item1 set Name=?,products=?,Day=?,quantity=?,price=? where pid=?""",
             (name,product,regdate,qty,price,id))

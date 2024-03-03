@@ -3,18 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
- <!-- Latest compiled and minified CSS -->
+    <!-- Latest compiled and minified CSS -->
  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-
- <!-- jQuery library -->
+<!-- jQuery library -->
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
- 
- <!-- Latest compiled JavaScript -->
+  <!-- Latest compiled JavaScript -->
  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <title>Document</title>
 </head>
-
 <style>
     body{
         background-color:rgb(147, 163, 95); 
@@ -22,28 +18,19 @@ background-position: center;
 background-repeat: no-repeat;
 background-size:cover;
 }
-
-
 </style>
 <body>
     {% with messages = get_flashed_messages(with_categories=true) %}
     {% if messages %}
-
-        {% for category, message in messages %}
+ {% for category, message in messages %}
             <div class="alert alert-{{category}}">{{ message }}</div>
         {% endfor %}
-
-    {% endif %}
-
+            {% endif %}
 {% endwith %}
     <div class="main">
        <center> <h1>PRODUCT RECORD<hr></h1></center>
-
-  
         <div align="center"class="table">
             <br>
-
-        
        <table class="table table-border" >
         <thead>
             <tr>
@@ -53,9 +40,7 @@ background-size:cover;
                 <th>DATE</th>
                 <th>QUANTITY</th>
                 <th>PRICE</th>
-               
-                
-            </tr>
+                </tr>
         </thead>
        <tbody>
         {% for res in data %}
@@ -67,10 +52,7 @@ background-size:cover;
             <td>{{res["Day"]}}</td>
             <td>{{res["quantity"]}}</td>
             <td>{{res["price"]}}</td>
-        
-
-           
-        </tr>
+            </tr>
         {% endfor %}
        </tbody>
        </table>
@@ -82,9 +64,7 @@ background-size:cover;
 </body>
 </html>
 <script>
-    
     $(document).ready (function(){
      $(".alert").hide(3000)
-                
-     });      
+                 });      
   </script>

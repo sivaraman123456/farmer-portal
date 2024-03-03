@@ -7,8 +7,7 @@
 </head>
 <style>
     *{
-        
-     padding: 0px;
+        padding: 0px;
      margin: 0px;  
     }
     body{
@@ -18,8 +17,7 @@
         width:100%;
         color:beige;
         background-color: rgba(103, 165, 103, 0.2);
-       
-    }
+       }
     .btn ul li{
         padding:30px;
     }
@@ -31,12 +29,9 @@
         list-style: none;
         margin-top: 50px;
     }
-
-         .btn ul li button a:hover{
+  .btn ul li button a:hover{
             color: orange;
         }
-
-
 </style>
 <body>
     <div class="btn">
@@ -44,10 +39,9 @@
    <li><button><a href="{{url_for('main1')}}" target="main1" class="btn btn-block">HOME</a></button></li>
    <li><button><a href="{{url_for('farmer')}}" target="main1">PRODUCT REGISTER</a></button></li>
    <li><button><a href="{{url_for('pro')}}" target="main1">VIEW PRODUCT</a></button></li>
-   <li><button><a href="{{url_for('view',id=['admin'])}}" target="main1">FARMER DETAILS</a></button></li>
+   <li><button><a href="{{url_for('view')}}" target="main1">FARMER DETAILS</a></button></li>
    <li><button><a href="{{url_for('logout')}}" target="new">LOGOUT</a></button></li>
-    
-     </ul>
+         </ul>
 </div>
 </body>
 </html>
